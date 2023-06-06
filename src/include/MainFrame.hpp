@@ -4,16 +4,20 @@
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
 
+#include "triangles.hpp"
+
 class MainFrame : public wxFrame
 {
     public: 
         MainFrame(const wxString& title);
     private:
-        int A;
-        int B;
-        int hasil = 0;
 
+        stl::Triangle triangle;
         wxStaticText* int_out;
+
+        float T1[3] = {0, 0, 0}
+            , T2[3] = {0, 0, 0}
+            , T3[3] = {0, 0, 0};
 
         void OnButtonClick(wxCommandEvent& evt);
         void OnSliderChange(wxCommandEvent& evt);
