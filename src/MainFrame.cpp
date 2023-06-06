@@ -50,6 +50,8 @@ MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title)
 
     int_out = new wxStaticText(panel, OUT_ID,"Jenis Segitiga : ", wxPoint(100, 320), wxSize(-1, -1));
 
+    int_out->SetFont(this->GetFont().Scale(2));
+
     CreateStatusBar();
 }
 
@@ -81,67 +83,52 @@ void MainFrame::OnTextCtrlChange(wxCommandEvent& evt)
         case X_1:
             evt.GetString().ToDouble(&x);
             T1[0] = (float) x;
-            tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
-            wxLogStatus(tes);
             break;
 
         case Y_1:
             evt.GetString().ToDouble(&x);
             T1[1] = (float) x;
-            tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
-            wxLogStatus(tes);
             break;
 
         case Z_1:
             evt.GetString().ToDouble(&x);
             T1[2] = (float) x;
-            tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
-            wxLogStatus(tes);
             break;
         
         case X_2:
             evt.GetString().ToDouble(&x);
             T2[0] = (float) x;
-            tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
-            wxLogStatus(tes);
             break;
 
         case Y_2:
             evt.GetString().ToDouble(&x);
             T2[1] = (float) x;
-            tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
-            wxLogStatus(tes);
             break;
 
         case Z_2:
             evt.GetString().ToDouble(&x);
             T2[2] = (float) x;
-            tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
-            wxLogStatus(tes);
             break;
         
         case X_3:
             evt.GetString().ToDouble(&x);
             T3[0] = (float) x;
-            tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
-            wxLogStatus(tes);
             break;
 
         case Y_3:
             evt.GetString().ToDouble(&x);
             T3[1] = (float) x;
-            tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
-            wxLogStatus(tes);
             break;
 
         case Z_3:
             evt.GetString().ToDouble(&x);
             T3[2] = (float) x;
-            tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
-            wxLogStatus(tes);
             break;
 
         default:
             break;
-    } 
+    }
+
+    tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
+    wxLogStatus(tes);
 }
