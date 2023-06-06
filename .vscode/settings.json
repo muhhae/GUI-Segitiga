@@ -1,0 +1,6 @@
+{
+  "C_Cpp.default.compilerPath": "D:\\Other\\msys2\\ucrt64\\bin\\g++.exe",
+  "files.associations": {
+    "sstream": "cpp"
+  }
+}
