@@ -89,7 +89,7 @@ namespace stl
         {
             if (abs(s[i] - 90) < 1e-5 )
             {
-                return "Siku-Siku";
+                return "SIKU - SIKU";
             }
             
             for (int j = 0; j < 3; j++)
@@ -108,15 +108,16 @@ namespace stl
         switch (sama)
         {
         case 2:
-            return "Sama Kaki";
+            return "SAMA KAKI";
             break;
         case 3:
-            return "Sama Sisi";
+            return "SAMA SISI";
             break;
         default:
             break;
         }
-        return "Sembarang";
+        
+        return "SEMBARANG";
 
     }
 

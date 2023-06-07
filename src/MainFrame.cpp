@@ -29,9 +29,10 @@ MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title)
         if(txt->GetId() % 3 == 2) txt->SetHint("Z");
     }
 
-    int_out = new wxStaticText(panel, wxID_ANY,"Jenis Segitiga : ", wxPoint(100, 320), wxSize(-1, -1));
+    int_out = new wxStaticText(panel, wxID_ANY,"JENIS SEGITIGA : ", wxPoint(100, 320), wxSize(-1, -1));
 
     int_out->SetFont(this->GetFont().Scale(1.5));
+
 
     CreateStatusBar();
 }
@@ -41,6 +42,7 @@ void MainFrame::OnButtonClick(wxCommandEvent& evt)
     for (const auto& txt : pos)
     {
         txt->SetValue("");
+        int_out->SetLabel("JENIS SEGITIGA : ");
     }
 }
 
@@ -92,14 +94,14 @@ void MainFrame::OnTextCtrlChange(wxCommandEvent& evt)
             break;
     }
 
-    tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
+    tes = wxString::Format("(%.2f, %.2f, %.2f) (%.2f, %.2f, %.2f) (%.2f, %.2f, %.2f)", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
     wxLogStatus(tes);
-    
+
     triangle.SetT1(stl::Point2D(T1));
     triangle.SetT2(stl::Point2D(T2));
     triangle.SetT3(stl::Point2D(T3));
 
-    wxString str = wxString::Format("Jenis Segitiga : %s", triangle.TriangleType());
+    wxString str = wxString::Format("JENIS SEGITIGA : %s", triangle.TriangleType());
 
 
     int_out->SetLabel(str);
