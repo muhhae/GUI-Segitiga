@@ -52,54 +52,17 @@ void MainFrame::OnTextCtrlChange(wxCommandEvent& evt)
     double x;
     evt.GetString().ToDouble(&x);
 
-    switch (evt.GetId())
-    {
-        case 0:
-            T1[0] = (float) x;
-            break;
+    int i = evt.GetId() / 3;
+    int j = evt.GetId() % 3;
 
-        case 1:
-            T1[1] = (float) x;
-            break;
+    T[i][j] = (float) x;
 
-        case 2:
-            T1[2] = (float) x;
-            break;
-        
-        case 3:
-            T2[0] = (float) x;
-            break;
-
-        case 4:
-            T2[1] = (float) x;
-            break;
-
-        case 5:
-            T2[2] = (float) x;
-            break;
-        
-        case 6:
-            T3[0] = (float) x;
-            break;
-
-        case 7:
-            T3[1] = (float) x;
-            break;
-
-        case 8:
-            T3[2] = (float) x;
-            break;
-
-        default:
-            break;
-    }
-
-    tes = wxString::Format("(%.2f, %.2f, %.2f) (%.2f, %.2f, %.2f) (%.2f, %.2f, %.2f)", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
+    tes = wxString::Format("(%.2f, %.2f, %.2f) (%.2f, %.2f, %.2f) (%.2f, %.2f, %.2f)", T[0][0], T[0][1], T[0][2], T[1][0], T[1][1], T[1][2], T[2][0], T[2][1], T[2][2]);
     wxLogStatus(tes);
 
-    triangle.SetT1(stl::Point2D(T1));
-    triangle.SetT2(stl::Point2D(T2));
-    triangle.SetT3(stl::Point2D(T3));
+    triangle.SetT1(stl::Point2D(T[0]));
+    triangle.SetT2(stl::Point2D(T[1]));
+    triangle.SetT3(stl::Point2D(T[2]));
 
     wxString str = wxString::Format("JENIS SEGITIGA : %s", triangle.TriangleType());
 

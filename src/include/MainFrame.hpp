@@ -16,9 +16,7 @@ class MainFrame : public wxFrame
         wxStaticText* int_out;
         std::vector<wxTextCtrl*> pos;
 
-        float T1[3] = {0, 0, 0}
-            , T2[3] = {0, 0, 0}
-            , T3[3] = {0, 0, 0};
+        float T[3][3] = {{0, 0, 0},{0, 0, 0},{0, 0, 0}};
 
         void OnButtonClick(wxCommandEvent& evt);
         void OnTextCtrlChange(wxCommandEvent& evt);
