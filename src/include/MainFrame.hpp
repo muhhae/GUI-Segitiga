@@ -14,6 +14,7 @@ class MainFrame : public wxFrame
 
         stl::Triangle triangle;
         wxStaticText* int_out;
+        std::vector<wxTextCtrl*> pos;
 
         float T1[3] = {0, 0, 0}
             , T2[3] = {0, 0, 0}

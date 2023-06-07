@@ -32,9 +32,7 @@ WDELOBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)\\%.o)
 ########################################################################
 
 all: $(APPNAME)
-	cp $(MANIFEST) $(MANIFEST_FILE)
-	mt.exe -manifest $(MANIFEST_FILE) -outputresource:$(APPNAME).exe
-	rm $(MANIFEST_FILE)
+	mt.exe -manifest $(SRCDIR)/dep/$(MANIFEST_FILE) -outputresource:$(APPNAME).exe
 
 # Builds the app
 $(APPNAME): $(OBJ)
