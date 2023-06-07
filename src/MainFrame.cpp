@@ -44,61 +44,47 @@ void MainFrame::OnButtonClick(wxCommandEvent& evt)
     }
 }
 
-void MainFrame::OnSliderChange(wxCommandEvent& evt)
-{
-    wxString str = wxString::Format("Slider Value: %f", evt.GetInt());
-    wxLogStatus(str);
-}
-
 void MainFrame::OnTextCtrlChange(wxCommandEvent& evt)
 {
     wxString tes;
     double x;
+    evt.GetString().ToDouble(&x);
 
     switch (evt.GetId())
     {
         case 0:
-            evt.GetString().ToDouble(&x);
             T1[0] = (float) x;
             break;
 
         case 1:
-            evt.GetString().ToDouble(&x);
             T1[1] = (float) x;
             break;
 
         case 2:
-            evt.GetString().ToDouble(&x);
             T1[2] = (float) x;
             break;
         
         case 3:
-            evt.GetString().ToDouble(&x);
             T2[0] = (float) x;
             break;
 
         case 4:
-            evt.GetString().ToDouble(&x);
             T2[1] = (float) x;
             break;
 
         case 5:
-            evt.GetString().ToDouble(&x);
             T2[2] = (float) x;
             break;
         
         case 6:
-            evt.GetString().ToDouble(&x);
             T3[0] = (float) x;
             break;
 
         case 7:
-            evt.GetString().ToDouble(&x);
             T3[1] = (float) x;
             break;
 
         case 8:
-            evt.GetString().ToDouble(&x);
             T3[2] = (float) x;
             break;
 
@@ -108,6 +94,7 @@ void MainFrame::OnTextCtrlChange(wxCommandEvent& evt)
 
     tes = wxString::Format("x1 : %f y1 : %f z1 : %f x2 : %f y2 : %f z2 : %f x3 : %f y3 : %f z3 : %f", T1[0], T1[1], T1[2], T2[0], T2[1], T2[2], T3[0], T3[1], T3[2]);
     wxLogStatus(tes);
+    
     triangle.SetT1(stl::Point2D(T1));
     triangle.SetT2(stl::Point2D(T2));
     triangle.SetT3(stl::Point2D(T3));

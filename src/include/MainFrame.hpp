@@ -21,7 +21,6 @@ class MainFrame : public wxFrame
             , T3[3] = {0, 0, 0};
 
         void OnButtonClick(wxCommandEvent& evt);
-        void OnSliderChange(wxCommandEvent& evt);
         void OnTextCtrlChange(wxCommandEvent& evt);
 };
 
