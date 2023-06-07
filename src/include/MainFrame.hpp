@@ -22,7 +22,6 @@ class MainFrame : public wxFrame
         void OnButtonClick(wxCommandEvent& evt);
         void OnSliderChange(wxCommandEvent& evt);
         void OnTextCtrlChange(wxCommandEvent& evt);
-        wxDECLARE_EVENT_TABLE();
 };
 
 #endif

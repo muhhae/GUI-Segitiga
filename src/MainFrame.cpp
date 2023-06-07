@@ -1,54 +1,32 @@
 #include "include/MainFrame.hpp"
 
-enum Ids{
-    BUTTON_ID = 2,
-    OUT_ID = 12,
-
-    X_1 = 3,
-    X_2 = 4,
-    X_3 = 5,
-
-    Y_1 = 6,
-    Y_2 = 7,
-    Y_3 = 8,
-
-    Z_1 = 9,
-    Z_2 = 10,
-    Z_3 = 11,
-};
-
-wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
-    EVT_BUTTON(BUTTON_ID, MainFrame::OnButtonClick)
-    EVT_TEXT(X_1, MainFrame::OnTextCtrlChange)
-    EVT_TEXT(X_2, MainFrame::OnTextCtrlChange)
-    EVT_TEXT(X_3, MainFrame::OnTextCtrlChange)
-    EVT_TEXT(Y_1, MainFrame::OnTextCtrlChange)
-    EVT_TEXT(Y_2, MainFrame::OnTextCtrlChange)
-    EVT_TEXT(Y_3, MainFrame::OnTextCtrlChange)
-    EVT_TEXT(Z_1, MainFrame::OnTextCtrlChange)
-    EVT_TEXT(Z_2, MainFrame::OnTextCtrlChange)
-    EVT_TEXT(Z_3, MainFrame::OnTextCtrlChange)
-wxEND_EVENT_TABLE()
-
 MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title)
 {
     wxPanel* panel = new wxPanel(this);
 
-    wxButton* button = new wxButton(panel, BUTTON_ID, "Hitung", wxPoint(100,100), wxSize(200, 50)); 
+    wxButton* button = new wxButton(panel, wxID_ANY, "Hitung", wxPoint(100,100), wxSize(200, 50)); 
+    button->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClick, this);
 
-    wxTextCtrl* x1 = new wxTextCtrl(panel, X_1, "x", wxPoint(100, 175), wxSize(100, -1));
-    wxTextCtrl* y1 = new wxTextCtrl(panel, Y_1, "y", wxPoint(210, 175), wxSize(100, -1));
-    wxTextCtrl* z1 = new wxTextCtrl(panel, Z_1, "z", wxPoint(320, 175), wxSize(100, -1));
+    std::vector<wxTextCtrl*> pos;
 
-    wxTextCtrl* x2 = new wxTextCtrl(panel, X_2, "x", wxPoint(100, 225), wxSize(100, -1));
-    wxTextCtrl* y2 = new wxTextCtrl(panel, Y_2, "y", wxPoint(210, 225), wxSize(100, -1));
-    wxTextCtrl* z2 = new wxTextCtrl(panel, Z_2, "z", wxPoint(320, 225), wxSize(100, -1));
+    pos.push_back (new wxTextCtrl(panel, 0, "x", wxPoint(100, 175), wxSize(100, -1)));
+    pos.push_back (new wxTextCtrl(panel, 1, "y", wxPoint(210, 175), wxSize(100, -1)));
+    pos.push_back (new wxTextCtrl(panel, 2, "z", wxPoint(320, 175), wxSize(100, -1)));
 
-    wxTextCtrl* x3 = new wxTextCtrl(panel, X_3, "x", wxPoint(100, 275), wxSize(100, -1));
-    wxTextCtrl* y3 = new wxTextCtrl(panel, Y_3, "y", wxPoint(210, 275), wxSize(100, -1));
-    wxTextCtrl* z3 = new wxTextCtrl(panel, Z_3, "z", wxPoint(320, 275), wxSize(100, -1));
+    pos.push_back (new wxTextCtrl(panel, 3, "x", wxPoint(100, 225), wxSize(100, -1)));
+    pos.push_back (new wxTextCtrl(panel, 4, "y", wxPoint(210, 225), wxSize(100, -1)));
+    pos.push_back (new wxTextCtrl(panel, 5, "z", wxPoint(320, 225), wxSize(100, -1)));
 
-    int_out = new wxStaticText(panel, OUT_ID,"Jenis Segitiga : ", wxPoint(100, 320), wxSize(-1, -1));
+    pos.push_back (new wxTextCtrl(panel, 6, "x", wxPoint(100, 275), wxSize(100, -1)));
+    pos.push_back (new wxTextCtrl(panel, 7, "y", wxPoint(210, 275), wxSize(100, -1)));
+    pos.push_back (new wxTextCtrl(panel, 8, "z", wxPoint(320, 275), wxSize(100, -1)));
+
+    for (const auto& txt : pos)
+    {
+        txt->Bind(wxEVT_TEXT, &MainFrame::OnTextCtrlChange, this);
+    }
+
+    int_out = new wxStaticText(panel, wxID_ANY,"Jenis Segitiga : ", wxPoint(100, 320), wxSize(-1, -1));
 
     int_out->SetFont(this->GetFont().Scale(2));
 
@@ -80,47 +58,47 @@ void MainFrame::OnTextCtrlChange(wxCommandEvent& evt)
 
     switch (evt.GetId())
     {
-        case X_1:
+        case 0:
             evt.GetString().ToDouble(&x);
             T1[0] = (float) x;
             break;
 
-        case Y_1:
+        case 1:
             evt.GetString().ToDouble(&x);
             T1[1] = (float) x;
             break;
 
-        case Z_1:
+        case 2:
             evt.GetString().ToDouble(&x);
             T1[2] = (float) x;
             break;
         
-        case X_2:
+        case 3:
             evt.GetString().ToDouble(&x);
             T2[0] = (float) x;
             break;
 
-        case Y_2:
+        case 4:
             evt.GetString().ToDouble(&x);
             T2[1] = (float) x;
             break;
 
-        case Z_2:
+        case 5:
             evt.GetString().ToDouble(&x);
             T2[2] = (float) x;
             break;
         
-        case X_3:
+        case 6:
             evt.GetString().ToDouble(&x);
             T3[0] = (float) x;
             break;
 
-        case Y_3:
+        case 7:
             evt.GetString().ToDouble(&x);
             T3[1] = (float) x;
             break;
 
-        case Z_3:
+        case 8:
             evt.GetString().ToDouble(&x);
             T3[2] = (float) x;
             break;
