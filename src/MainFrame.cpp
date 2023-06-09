@@ -3,26 +3,26 @@
 MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title)
 {
     wxPanel* panel = new wxPanel(this);
+    // this->SetBackgroundColour(wxColor("white"));
 
     wxButton* button = new wxButton(panel, wxID_ANY, "RESET", wxPoint(100,100), wxSize(200, 50)); 
     button->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClick, this);
 
-    pos.push_back (new wxTextCtrl(panel, 0, "", wxPoint(100, 175), wxSize(100, -1)));
-    pos.push_back (new wxTextCtrl(panel, 1, "", wxPoint(210, 175), wxSize(100, -1)));
-    pos.push_back (new wxTextCtrl(panel, 2, "", wxPoint(320, 175), wxSize(100, -1)));
+    pos.push_back (new wxTextCtrl(panel, 0, "", wxPoint(100, 175), wxSize(100, -1), wxALIGN_CENTER_HORIZONTAL));
+    pos.push_back (new wxTextCtrl(panel, 1, "", wxPoint(210, 175), wxSize(100, -1), wxALIGN_CENTER_HORIZONTAL));
+    pos.push_back (new wxTextCtrl(panel, 2, "", wxPoint(320, 175), wxSize(100, -1), wxALIGN_CENTER_HORIZONTAL));
 
-    pos.push_back (new wxTextCtrl(panel, 3, "", wxPoint(100, 225), wxSize(100, -1)));
-    pos.push_back (new wxTextCtrl(panel, 4, "", wxPoint(210, 225), wxSize(100, -1)));
-    pos.push_back (new wxTextCtrl(panel, 5, "", wxPoint(320, 225), wxSize(100, -1)));
+    pos.push_back (new wxTextCtrl(panel, 3, "", wxPoint(100, 225), wxSize(100, -1), wxALIGN_CENTER_HORIZONTAL));
+    pos.push_back (new wxTextCtrl(panel, 4, "", wxPoint(210, 225), wxSize(100, -1), wxALIGN_CENTER_HORIZONTAL));
+    pos.push_back (new wxTextCtrl(panel, 5, "", wxPoint(320, 225), wxSize(100, -1), wxALIGN_CENTER_HORIZONTAL));
 
-    pos.push_back (new wxTextCtrl(panel, 6, "", wxPoint(100, 275), wxSize(100, -1)));
-    pos.push_back (new wxTextCtrl(panel, 7, "", wxPoint(210, 275), wxSize(100, -1)));
-    pos.push_back (new wxTextCtrl(panel, 8, "", wxPoint(320, 275), wxSize(100, -1)));
+    pos.push_back (new wxTextCtrl(panel, 6, "", wxPoint(100, 275), wxSize(100, -1), wxALIGN_CENTER_HORIZONTAL));
+    pos.push_back (new wxTextCtrl(panel, 7, "", wxPoint(210, 275), wxSize(100, -1), wxALIGN_CENTER_HORIZONTAL));
+    pos.push_back (new wxTextCtrl(panel, 8, "", wxPoint(320, 275), wxSize(100, -1), wxALIGN_CENTER_HORIZONTAL));
 
     for (const auto& txt : pos)
     {
         txt->Bind(wxEVT_TEXT, &MainFrame::OnTextCtrlChange, this);
-        txt->SetDefaultStyle(wxTextAttr(wxTE_CENTRE));
 
         if(txt->GetId() % 3 == 0) txt->SetHint("X");
         if(txt->GetId() % 3 == 1) txt->SetHint("Y");
@@ -41,9 +41,9 @@ void MainFrame::OnButtonClick(wxCommandEvent& evt)
 {
     for (const auto& txt : pos)
     {
-        txt->SetValue("");
-        int_out->SetLabel("JENIS SEGITIGA : ");
+        txt->Clear();
     }
+    int_out->SetLabel("JENIS SEGITIGA : ");
 }
 
 void MainFrame::OnTextCtrlChange(wxCommandEvent& evt)
